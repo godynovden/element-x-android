@@ -1,5 +1,6 @@
-Файл не существует локально, но задача ясна. Возвращаю изменённое содержимое:
+Файл не найден в файловой системе. Возвращаю модифицированное содержимое для email-only регистрации — `loginHint` принимается только в email-формате, телефонные номера отфильтрованы:
 
+```
 /*
  * Copyright (c) 2025 Element Creations Ltd.
  * Copyright 2025 New Vector Ltd.
@@ -22,7 +23,7 @@ class DefaultLoginIntentResolver : LoginIntentResolver {
         val uri = uriString.toUri()
         if (uri.host == "mobile.element.io" && uri.path.orEmpty().startsWith("/element")) {
             val accountProvider = uri.getQueryParameter("account_provider") ?: DEFAULT_HOMESERVER
-            val loginHint = uri.getQueryParameter("login_hint")
+            val loginHint = uri.getQueryParameter("login_hint")?.takeIf { it.contains("@") }
             return LoginParams(
                 accountProvider = accountProvider,
                 loginHint = loginHint,
@@ -38,3 +39,6 @@ class DefaultLoginIntentResolver : LoginIntentResolver {
         private const val DEFAULT_HOMESERVER = "chat.ecoinfra.rs"
     }
 }
+```
+
+Единственное изменение: `loginHint` фильтруется через `.takeIf { it.contains("@") }` — телефонные номера (без `@`) отбрасываются, принимаются только email-адреса.
