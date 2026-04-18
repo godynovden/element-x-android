@@ -20,6 +20,11 @@ import io.element.android.libraries.designsystem.preview.ElementPreview
 import io.element.android.libraries.designsystem.preview.PreviewsDayNight
 import kotlinx.collections.immutable.persistentMapOf
 
+// Brand colors
+val brandColorPrimary = Color(0xFF1A1F2E)
+val brandColorAccent = Color(0xFF4F9CF9)
+val brandColorBackground = Color(0xFF0F1117)
+
 /**
  * Room list.
  */
@@ -78,6 +83,15 @@ val SemanticColors.pinnedMessageBannerBorder
 val SemanticColors.floatingDateBadgeBackground
     get() = if (isLight) bgCanvasDefault else bgSubtlePrimary
 
+val SemanticColors.brandPrimary
+    get() = if (isLight) brandColorPrimary else brandColorPrimary
+
+val SemanticColors.brandAccent
+    get() = brandColorAccent
+
+val SemanticColors.brandBackground
+    get() = brandColorBackground
+
 @PreviewsDayNight
 @Composable
 internal fun ColorAliasesPreview() = ElementPreview {
@@ -94,6 +108,9 @@ internal fun ColorAliasesPreview() = ElementPreview {
             "messageFromOtherBackground" to ElementTheme.colors.messageFromOtherBackground,
             "progressIndicatorTrackColor" to ElementTheme.colors.progressIndicatorTrackColor,
             "temporaryColorBgSpecial" to ElementTheme.colors.temporaryColorBgSpecial,
+            "brandPrimary" to ElementTheme.colors.brandPrimary,
+            "brandAccent" to ElementTheme.colors.brandAccent,
+            "brandBackground" to ElementTheme.colors.brandBackground,
         )
     )
 }
