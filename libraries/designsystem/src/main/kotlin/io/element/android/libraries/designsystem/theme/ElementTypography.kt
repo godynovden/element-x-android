@@ -1,3 +1,5 @@
+The file doesn't exist locally, so I'll return the modified content as requested.
+
 /*
  * Copyright (c) 2025 Element Creations Ltd.
  * Copyright 2023-2025 New Vector Ltd.
@@ -8,8 +10,13 @@
 
 package io.element.android.libraries.designsystem.theme
 
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
+
+val ElementColorPrimary = Color(0xFF1A1F2E)
+val ElementColorAccent = Color(0xFF4F9CF9)
+val ElementColorBackground = Color(0xFF0F1117)
 
 // Temporary style for text that needs to be aligned without weird font padding issues.  `includeFontPadding` will default to false in a future version of
 // compose, at which point this can be removed.
