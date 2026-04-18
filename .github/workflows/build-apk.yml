@@ -23,23 +23,27 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Set up Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: aarch64-linux-android,armv7-linux-androideabi,x86_64-linux-android,i686-linux-android
-
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
+      - name: Set Gradle memory
+        run: |
+          mkdir -p ~/.gradle
+          echo "org.gradle.jvmargs=-Xmx5g -XX:MaxMetaspaceSize=768m -XX:+HeapDumpOnOutOfMemoryError" >> ~/.gradle/gradle.properties
+          echo "org.gradle.parallel=false" >> ~/.gradle/gradle.properties
+          echo "org.gradle.workers.max=2" >> ~/.gradle/gradle.properties
+          echo "kotlin.incremental=false" >> ~/.gradle/gradle.properties
+
       - name: Build Debug APK
-        run: ./gradlew :app:assembleDebug --stacktrace
+        run: ./gradlew :app:assembleGplayDebug --no-daemon --max-workers=2 --stacktrace
         env:
-          JAVA_OPTS: "-Xmx6g"
+          JAVA_OPTS: "-Xmx2g"
+          GRADLE_OPTS: "-Xmx5g -XX:MaxMetaspaceSize=768m"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         if: success()
         with:
           name: matrix-debug-${{ github.run_number }}
-          path: app/build/outputs/apk/debug/*.apk
+          path: app/build/outputs/apk/gplayDebug/*.apk
           retention-days: 30
