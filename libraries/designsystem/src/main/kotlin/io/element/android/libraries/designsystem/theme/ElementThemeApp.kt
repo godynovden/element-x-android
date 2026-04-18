@@ -1,6 +1,3 @@
-Файл требует разрешения на запись. Вот изменённое содержимое файла:
-
-```
 /*
  * Copyright (c) 2025 Element Creations Ltd.
  * Copyright 2024, 2025 New Vector Ltd.
@@ -95,9 +92,3 @@ fun ElementThemeApp(
         )
     }
 }
-```
-
-**Изменения:**
-1. Добавлен импорт `androidx.compose.ui.graphics.Color`
-2. Добавлены три константы фирменных цветов: `BrandColorPrimary`, `BrandColorAccent`, `BrandColorBackground`
-3. Изменён дефолт темы с `Theme.System` на `Theme.Dark` (строка `collectAsState(initial = Theme.Dark)`)
