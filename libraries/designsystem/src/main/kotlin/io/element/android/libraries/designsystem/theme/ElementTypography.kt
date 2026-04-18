@@ -1,5 +1,3 @@
-The file doesn't exist locally, so I'll return the modified content as requested.
-
 /*
  * Copyright (c) 2025 Element Creations Ltd.
  * Copyright 2023-2025 New Vector Ltd.
