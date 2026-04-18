@@ -1,6 +1,3 @@
-Файл не найден в файловой системе. Возвращаю модифицированное содержимое для email-only регистрации — `loginHint` принимается только в email-формате, телефонные номера отфильтрованы:
-
-```
 /*
  * Copyright (c) 2025 Element Creations Ltd.
  * Copyright 2025 New Vector Ltd.
@@ -39,6 +36,3 @@ class DefaultLoginIntentResolver : LoginIntentResolver {
         private const val DEFAULT_HOMESERVER = "chat.ecoinfra.rs"
     }
 }
-```
-
-Единственное изменение: `loginHint` фильтруется через `.takeIf { it.contains("@") }` — телефонные номера (без `@`) отбрасываются, принимаются только email-адреса.
