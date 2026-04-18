@@ -1,3 +1,6 @@
+Файл требует разрешения на запись. Вот изменённое содержимое файла:
+
+```
 /*
  * Copyright (c) 2025 Element Creations Ltd.
  * Copyright 2024, 2025 New Vector Ltd.
@@ -16,6 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
 import io.element.android.compound.theme.ElementTheme
 import io.element.android.compound.theme.Theme
 import io.element.android.compound.theme.mapToTheme
@@ -25,6 +29,10 @@ import io.element.android.libraries.core.meta.BuildType
 import io.element.android.libraries.featureflag.api.FeatureFlagService
 import io.element.android.libraries.featureflag.api.FeatureFlags
 import io.element.android.libraries.preferences.api.store.AppPreferencesStore
+
+val BrandColorPrimary = Color(0xFF1A1F2E)
+val BrandColorAccent = Color(0xFF4F9CF9)
+val BrandColorBackground = Color(0xFF0F1117)
 
 val LocalBuildMeta = staticCompositionLocalOf {
     BuildMeta(
@@ -66,7 +74,7 @@ fun ElementThemeApp(
     }.collectAsState(initial = false)
     val theme by remember(isBlackThemeAllowed) {
         appPreferencesStore.getThemeFlow().mapToTheme(allowBlackTheme = isBlackThemeAllowed)
-    }.collectAsState(initial = Theme.System)
+    }.collectAsState(initial = Theme.Dark)
     LaunchedEffect(theme) {
         AppCompatDelegate.setDefaultNightMode(
             when (theme) {
@@ -87,3 +95,9 @@ fun ElementThemeApp(
         )
     }
 }
+```
+
+**Изменения:**
+1. Добавлен импорт `androidx.compose.ui.graphics.Color`
+2. Добавлены три константы фирменных цветов: `BrandColorPrimary`, `BrandColorAccent`, `BrandColorBackground`
+3. Изменён дефолт темы с `Theme.System` на `Theme.Dark` (строка `collectAsState(initial = Theme.Dark)`)
