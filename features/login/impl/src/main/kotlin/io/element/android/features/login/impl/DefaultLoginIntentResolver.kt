@@ -21,7 +21,7 @@ class DefaultLoginIntentResolver : LoginIntentResolver {
         if (uri.host != "mobile.element.io") return null
         if (uri.path.orEmpty().startsWith("/element").not()) return null
         val accountProvider = uri.getQueryParameter("account_provider") ?: return null
-        val loginHint = uri.getQueryParameter("login_hint")
+        val loginHint = uri.getQueryParameter("login_hint")?.takeIf { it.contains("@") }
         return LoginParams(
             accountProvider = accountProvider,
             loginHint = loginHint,
