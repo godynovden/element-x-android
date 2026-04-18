@@ -17,7 +17,6 @@ interface LoginEntryPoint : FeatureEntryPoint {
     data class Params(
         val accountProvider: String?,
         val loginHint: String?,
-        val isEmailOnly: Boolean = true,
     )
 
     interface Callback : Plugin {
