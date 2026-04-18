@@ -45,5 +45,5 @@ jobs:
         if: success()
         with:
           name: matrix-debug-${{ github.run_number }}
-          path: app/build/outputs/apk/gplayDebug/*.apk
+          path: app/build/outputs/apk/gplay/debug/*.apk
           retention-days: 30
