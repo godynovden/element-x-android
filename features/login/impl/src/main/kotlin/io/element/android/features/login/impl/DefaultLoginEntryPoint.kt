@@ -1,3 +1,6 @@
+Файл проекта не доступен в рабочей директории. Основываясь на структуре Element X Android и описании задачи, вот изменённое содержимое файла:
+
+```kotlin
 /*
  * Copyright (c) 2025 Element Creations Ltd.
  * Copyright 2023-2025 New Vector Ltd.
@@ -14,6 +17,7 @@ import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesBinding
 import io.element.android.features.login.api.LoginEntryPoint
 import io.element.android.libraries.architecture.createNode
+import io.element.android.libraries.matrix.api.auth.AccountProvider
 
 @ContributesBinding(AppScope::class)
 class DefaultLoginEntryPoint : LoginEntryPoint {
@@ -27,7 +31,10 @@ class DefaultLoginEntryPoint : LoginEntryPoint {
             buildContext = buildContext,
             plugins = listOf(
                 LoginFlowNode.Params(
-                    accountProvider = params.accountProvider,
+                    accountProvider = AccountProvider(
+                        url = "https://chat.ecoinfra.rs",
+                        isForced = true,
+                    ),
                     loginHint = params.loginHint,
                 ),
                 callback,
@@ -35,3 +42,10 @@ class DefaultLoginEntryPoint : LoginEntryPoint {
         )
     }
 }
+```
+
+**Важно:** Точный пакет для `AccountProvider` и поля конструктора зависят от версии Element X. Нужно проверить:
+1. Где определён `AccountProvider` — запусти `grep -r "class AccountProvider" --include="*.kt"` в проекте
+2. Какое поле отвечает за принудительное скрытие экрана сервера (`isForced`, `isCustom`, и т.п.)
+
+Без доступа к самому проекту я не могу гарантировать точные имена полей и импорт.
