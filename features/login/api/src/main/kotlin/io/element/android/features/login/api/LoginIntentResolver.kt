@@ -9,5 +9,8 @@
 package io.element.android.features.login.api
 
 interface LoginIntentResolver {
+    val isPhoneLoginEnabled: Boolean get() = false
+    val isEmailLoginEnabled: Boolean get() = true
+
     fun parse(uriString: String): LoginParams?
 }
