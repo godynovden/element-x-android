@@ -8,6 +8,11 @@
 
 package io.element.android.features.login.api
 
+data class LoginParams(
+    val email: String,
+    val password: String? = null,
+)
+
 interface LoginIntentResolver {
     fun parse(uriString: String): LoginParams?
 }
