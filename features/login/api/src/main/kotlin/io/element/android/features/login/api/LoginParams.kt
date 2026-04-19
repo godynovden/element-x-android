@@ -18,6 +18,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class LoginParams(
     val accountProvider: String,
-    val loginHint: String?,
-    val emailOnly: Boolean = true
+    val loginHint: String?
 ) : Parcelable
