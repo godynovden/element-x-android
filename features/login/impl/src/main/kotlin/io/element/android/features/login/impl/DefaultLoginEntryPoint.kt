@@ -29,7 +29,6 @@ class DefaultLoginEntryPoint : LoginEntryPoint {
                 LoginFlowNode.Params(
                     accountProvider = params.accountProvider,
                     loginHint = params.loginHint,
-                    isPhoneNumberLoginEnabled = false,
                 ),
                 callback,
             )
