@@ -284,6 +284,9 @@ dependencies {
 
     implementation(platform(libs.network.okhttp.bom))
     implementation(libs.network.okhttp.logging)
+    // Firebase FCM push notifications
+    implementation(platform(libs.google.firebase.bom))
+    implementation("com.google.firebase:firebase-messaging-ktx")
     implementation(libs.serialization.json)
 
     implementation(libs.matrix.emojibase.bindings)
