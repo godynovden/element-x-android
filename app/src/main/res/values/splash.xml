@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Matrix.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#0F1117</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
+        <item name="windowSplashScreenIconBackgroundColor">#4F9CF9</item>
+        <item name="postSplashScreenTheme">@style/Theme.ElementX</item>
+    </style>
+</resources>
