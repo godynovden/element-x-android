@@ -24,6 +24,7 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.dependencygraph)
     alias(libs.plugins.sonarqube)
+    alias(libs.plugins.gms.google.services) apply false
 }
 
 tasks.register<Delete>("clean").configure {
