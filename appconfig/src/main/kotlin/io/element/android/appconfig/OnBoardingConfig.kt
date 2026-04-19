@@ -9,6 +9,9 @@
 package io.element.android.appconfig
 
 object OnBoardingConfig {
-    /** Whether the user can create an account using the app. */
-    const val CAN_CREATE_ACCOUNT = true
+    /** Whether the user can create an account using the app.
+     * Disabled: our homeserver (chat.ecoinfra.rs) uses password login only (no OIDC/MAS).
+     * Users must register via https://chat.ecoinfra.rs first, then sign in here.
+     */
+    const val CAN_CREATE_ACCOUNT = false
 }
